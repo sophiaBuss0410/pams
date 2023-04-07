@@ -19,7 +19,7 @@ class AgentOrderLogger(Logger):
             None
         """
         print(
-            f"{log.order_id} {log.agent_id}" # {log.market.market_id} {log.market.name} {log.market.get_market_price()} {log.market.get_fundamental_price()}"
+            f"{log.order_id} {log.agent_id} {log.market_id} {log.time} {log.is_buy} {log.kind} {log.volume} {log.price} {log.ttl}"
         )
 
 
@@ -39,13 +39,14 @@ class AgentOrderSaver(Logger):
         """
         self.agent_order_logs.append(
             {
-                  "order_id": log.order_id,
-                  "agent_id": log.agent_id,
-#                 "session_id": log.session.session_id,
-#                 "market_time": log.market.get_time(),
-#                 "market_id": log.market.market_id,
-#                 "market_name": log.market.name,
-#                 "market_price": log.market.get_market_price(),
-#                 "fundamental_price": log.market.get_fundamental_price(),
+                "order_id": log.order_id,
+                "agent_id": log.agent_id,
+                "market_id": log.market_id,
+                "order_time": log.time,
+                "is_buy": log.is_buy,
+                "kind": log.kind,
+                "volume": log.volume,
+                "price": log.price,
+                "time_exp": log.ttl,
             }
         )
